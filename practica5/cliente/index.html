@@ -14,13 +14,14 @@
         form {background: rgba(0,0,0,0); padding: 0.25rem; position: fixed; bottom: 0; left: 0;display: flex; height: 3rem; box-sizing: border-box;}
         ul {list-style-type: none; margin: 0; padding: 0;}
         ul > li{padding:0.5rem 1rem;}
-        ul > li:nth-child(odd){background: #dcf8c6; text-align: right; font-style: italic; font-weight: 600; }
+        /* ul > li:nth-child(odd){background: #dcf8c6; text-align: right; font-style: italic; font-weight: 600; } */
     </style>
   </head>
   <body>
     <ul class="list-group"></ul>
+    <input type="text" placeholder="Nombre" id="Nombre">
     <form actin="">
-        <input type="text" class="form-control" placeholder="Mensaje">
+        <input type="text" class="form-control" id="mensaje"  placeholder="Mensaje">
         <button type="submit" class="miboton">Enviar</button> 
     </form>
 
@@ -32,13 +33,14 @@
     <script>
         let socket = io()
         const form = document.querySelector('form')
-        const input = document.querySelector('input')
+        const input = document.getElementById('mensaje')
+        const name = document.getElementById('Nombre')
         let mensajes = document.querySelector('ul')
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
             if(input.value){
-                socket.emit('chat',input.value)
+                socket.emit('chat',name.value,input.value)
                 input.value=""
             }
         })

@@ -1,29 +1,25 @@
-const{MongoClient} = require('mongodb')
+var mongodb = require('mongodb');
 
-module.exports=  async function main(){  
-    const uri = "mongodb+srv://<usename>:<password>@<mongo_uri>/?retryWrites=true&w=majority";
- 
+module.exports = function() {
 
-    const client = new MongoClient(uri);
- 
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
- 
-        // Make the appropriate DB calls
-        await  listDatabases(client);
- 
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
+    module.exports= function(callback) {
 
-}
+        var MongoClient = mongodb.MongoClient;
+        var url = "mongodb+srv://<username>:<password>@<mongo_uri>/?retryWrites=true&w=majority";
 
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
- 
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+
+        MongoClient.connect(url, function(err, db) {
+
+            if (err) {
+                console.log('Unable to connect to the mongoDB server. Error:', err);
+                return;
+            } else {
+                console.log('Connection established to', url);
+                return callback;
+            } //else
+
+        }); //MongoClient.connect
+
+    }; //Connection
+
+}; //constructor
