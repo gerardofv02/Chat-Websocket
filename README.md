@@ -4,7 +4,7 @@
 To run this Web-Socket application,you have to be in the correct folder of it ( in that case it is called "practica5") and later you have to put "nodemon app" in your console.
 
 ## Chat
-This chat is a simple chat made with Web-Socket. It is made with html and javascript with the libraries of express, nodemon and socket.io. Everyone who join in the local way can chat with all of the people who is inside it.
+This chat is a simple chat made with Web-Socket. It is made with html and javascript with the libraries of express, nodemon and socket.io (node.js). Everyone who join in the local way can chat with all of the people who is inside it.
 
 ## How it works
 ### Client
