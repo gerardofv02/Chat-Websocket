@@ -15,11 +15,14 @@
         ul {list-style-type: none; margin: 0; padding: 0;}
         ul > li{padding:0.5rem 1rem;}
         /* ul > li:nth-child(odd){background: #dcf8c6; text-align: right; font-style: italic; font-weight: 600; } */
+        
     </style>
   </head>
   <body>
+    <input type="text" placeholder="Nombre" id="Nombre"/>
     <ul class="list-group"></ul>
-    <input type="text" placeholder="Nombre" id="Nombre">
+
+
     <form actin="">
         <input type="text" class="form-control" id="mensaje"  placeholder="Mensaje">
         <button type="submit" class="miboton">Enviar</button> 
@@ -29,14 +32,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./functions.js" charset="utf-8"></script>
-
+<!-- Under this comment we have the variables created to put the things in the form and also to send info throught the socket and also to put the user -->
+<!-- We also have the function of the event listener to emit the message of the user and under it, we have the function of socket.on to receive all the users the message-->
     <script>
         let socket = io()
         const form = document.querySelector('form')
         const input = document.getElementById('mensaje')
         const name = document.getElementById('Nombre')
         let mensajes = document.querySelector('ul')
-
+    
         form.addEventListener('submit', (e) => {
             e.preventDefault()
             if(input.value){
